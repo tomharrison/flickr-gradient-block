@@ -1,17 +1,18 @@
 (function () {
     var fadeCache = {},
         hasFadeClass = 'hasFlickrFade',
-        fadeRemovedClass = 'fadeRemoved';
+        markerClass = 'fadeRemoved',
+        randUpperLimit = 100000;
 
-    function cacheFade(fadeEl, avatarEl) {
-        var id = avatarEl.getAttribute('id');
+    function cacheFade(fadeEl, triggerEl) {
+        var id = triggerEl.getAttribute('id');
         if (id !== null && id !== '') {
             fadeCache[id] = fadeEl;
         }
     }
 
-    function getCachedFade(avatarEl) {
-        var id = avatarEl.getAttribute('id');
+    function getCachedFade(triggerEl) {
+        var id = triggerEl.getAttribute('id');
         if (id !== null && id !== '' && id in fadeCache) {
             return fadeCache[id];
         }
@@ -29,18 +30,18 @@
         return null;
     }
 
-    function findFade(avatarEl) {
+    function findFade(triggerEl) {
         var fade, p;
-        fade = getCachedFade(avatarEl);
+        fade = getCachedFade(triggerEl);
         if (typeof fade !== 'undefined' && fade !== null) {
             return fade;
         }
 
-        p = parentsQuerySelector('.imgWrapper', avatarEl);
+        p = parentsQuerySelector('.imgWrapper', triggerEl);
         if (p !== null) {
             fade = p.querySelector('.fade-big,.fade-small');
             if (fade !== null) {
-                cacheFade(fade, avatarEl);
+                cacheFade(fade, triggerEl);
                 return fade;
             }
         }
@@ -61,14 +62,23 @@
         }
     }
 
+    function generateId() {
+        return 'nogradients' + (Math.floor(Math.random() * randUpperLimit) + 1);
+    }
+
     function bindEvents() {
-        var nodes = document.querySelectorAll('.imgWrapper .buddyicon:not(.'+fadeRemovedClass+')'),
+        var nodes = document.querySelectorAll('.imgWrapper .buddyicon:not(.'+markerClass+'),.imgWrapper .usernameLink:not(.'+markerClass+'),.imgWrapper .activity-item-date:not('+markerClass+')'),
             i = nodes.length;
         while (i--) {
-            var el = nodes[i];
+            var el = nodes[i],
+                id = el.getAttribute('id');
             el.addEventListener('mouseover', handleMouseOver, false);
             el.addEventListener('mouseout', handleMouseOut, false);
-            el.classList.add(fadeRemovedClass);
+            el.classList.add(markerClass);
+
+            if (id === null) {
+                el.setAttribute('id', generateId());
+            }
         }
     }
 
