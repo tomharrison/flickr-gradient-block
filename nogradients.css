@@ -1,4 +1,4 @@
-#activityFeed .fade-big,
-#activityFeed .fade-small {
+#activityFeed .fade-big:not(.hasFlickrFade),
+#activityFeed .fade-small:not(.hasFlickrFade) {
     background-image: none;
 }

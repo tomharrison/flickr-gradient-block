@@ -8,6 +8,7 @@
 		{
 			"all_frames": true,
 			"css": ["nogradients.css"],
+			"js": ["nogradients.js"],
 			"matches": ["*://*.flickr.com/"]
 		}
 	]
