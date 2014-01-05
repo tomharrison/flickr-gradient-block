@@ -82,6 +82,14 @@
         }
     }
 
+    function watchForNewPhotos() {
+        document.addEventListener('DOMNodeInserted', function (e) {
+            if (e.relatedNode.webkitMatchesSelector('#activityFeed')) {
+                bindEvents();
+            }
+        });
+    }
+
     /* Source: http://stackoverflow.com/a/5706881/435084 */
     var tid = setInterval(function () {
         if (document.readyState !== 'complete') {
@@ -89,5 +97,6 @@
         }
         clearInterval(tid);
         bindEvents();
+        watchForNewPhotos();
     }, 100);
 })();
