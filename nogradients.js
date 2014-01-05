@@ -18,6 +18,17 @@
         return null;
     }
 
+    function parentsQuerySelector(sel, el) {
+        var p = el.parentNode;
+        while (p !== null) {
+            if (p.webkitMatchesSelector(sel)) {
+                return p;
+            }
+            p = p.parentNode;
+        }
+        return null;
+    }
+
     function findFade(avatarEl) {
         var fade, p;
         fade = getCachedFade(avatarEl);
@@ -25,16 +36,13 @@
             return fade;
         }
 
-        p = avatarEl.parentNode;
-        while (p !== null) {
-            if (p.classList.contains('imgWrapper')) {
-                fade = p.querySelector('.fade-big,.fade-small');
-                if (fade !== null) {
-                    cacheFade(fade, avatarEl);
-                    return fade;
-                }
+        p = parentsQuerySelector('.imgWrapper', avatarEl);
+        if (p !== null) {
+            fade = p.querySelector('.fade-big,.fade-small');
+            if (fade !== null) {
+                cacheFade(fade, avatarEl);
+                return fade;
             }
-            p = p.parentNode;
         }
         return null;
     }
