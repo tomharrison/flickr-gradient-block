@@ -1,0 +1,13 @@
+{
+	"name": "Flickr Gradient Block",
+	"version": "0.0.1",
+	"description": "Removes gradient overlays from images in your Flickr contacts feed.",
+	"manifest_version": 2,
+	"content_scripts": [
+		{
+			"all_frames": true,
+			"css": ["nogradients.css"],
+			"matches": ["*://*.flickr.com/"]
+		}
+	]
+}
