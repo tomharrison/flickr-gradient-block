@@ -6,3 +6,4 @@ README.md
 .gitignore
 exclude.txt
 *.zip
+promo_image.png
