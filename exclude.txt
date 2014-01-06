@@ -1,0 +1,8 @@
+*.pem
+Makefile
+README.md
+.git
+.DS_Store
+.gitignore
+exclude.txt
+*.zip
