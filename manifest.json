@@ -1,6 +1,6 @@
 {
 	"name": "Flickr Gradient Block",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Removes gradient overlays from images in your Flickr contacts feed.",
 	"manifest_version": 2,
 	"homepage_url": "http://www.thetomharrison.com/flickr-gradient-block",
