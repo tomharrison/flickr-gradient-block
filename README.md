@@ -8,6 +8,11 @@ Introduction
 
 The new Flickr activity feed uses a gradient overlay to make the photographer's name visible regardless of the background image's brightness. A side effect of this design is that every photo in the activity feed looks like it was shot with a graduated neutral density filter. This Chrome extension removes that gradient by default, and enables it only when you hover over the photographer's name or avatar.
 
+Requirements
+------------
+
+This is a browser extension for Google Chrome.
+
 Disclaimer
 ----------
 
