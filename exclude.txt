@@ -7,3 +7,4 @@ README.md
 exclude.txt
 *.zip
 promo_image.png
+screenshot*.png
